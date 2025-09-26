@@ -1,12 +1,283 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Krisp\\OneDrive\\Documents\\GitHub\\s3965206-s3935358-a2\\BankingApplication\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075954_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926075954_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075617_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926075617_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074848_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926074848_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074344_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926074344_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926073932_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926073932_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\data\\bankingapplicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\data\\bankingapplicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926061335_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926061335_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926060637_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingApplication\\Migrations\\20250926060637_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|c:\\users\\kristijan\\documents\\github\\s3965206-s3935358-a2\\bankingapplication\\bankingapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{07A31D2A-FBF9-4FEF-940C-CEF983EF97DF}|BankingApplication\\BankingApplication.csproj|solutionrelative:bankingapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20250926075954_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075954_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926075954_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075954_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926075954_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T07:59:54.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20250926075617_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075617_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926075617_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926075617_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926075617_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T07:56:17.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20250926074848_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074848_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926074848_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074848_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926074848_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T07:48:48.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20250926074344_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074344_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926074344_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926074344_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926074344_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T07:43:45.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250926073932_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926073932_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926073932_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926073932_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926073932_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T07:39:32.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Program.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Program.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Program.cs",
+              "RelativeToolTip": "BankingApplication\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:40:06.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "BankingApplication\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAD4v0cAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:39:26.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Transaction.cs",
+              "RelativeToolTip": "BankingApplication\\Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:32:35.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Models\\Account.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Account.cs",
+              "RelativeToolTip": "BankingApplication\\Models\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:26:23.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BankingApplicationContext.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Data\\BankingApplicationContext.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Data\\BankingApplicationContext.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Data\\BankingApplicationContext.cs",
+              "RelativeToolTip": "BankingApplication\\Data\\BankingApplicationContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:03:53.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Data\\SeedData.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Data\\SeedData.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Data\\SeedData.cs*",
+              "RelativeToolTip": "BankingApplication\\Data\\SeedData.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:00:58.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Models\\Customer.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Models\\Customer.cs",
+              "RelativeToolTip": "BankingApplication\\Models\\Customer.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:22:40.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20250926061335_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926061335_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926061335_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926061335_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926061335_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:13:35.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20250926060637_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926060637_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankingApplication\\Migrations\\20250926060637_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\Migrations\\20250926060637_InitialCreate.cs",
+              "RelativeToolTip": "BankingApplication\\Migrations\\20250926060637_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T06:06:37.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\.gitignore",
+              "RelativeDocumentMoniker": "BankingApplication\\.gitignore",
+              "ToolTip": "C:\\Users\\Kristijan\\Documents\\Github\\s3965206-s3935358-a2\\BankingApplication\\BankingApplication\\.gitignore",
+              "RelativeToolTip": "BankingApplication\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-26T00:24:21.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
