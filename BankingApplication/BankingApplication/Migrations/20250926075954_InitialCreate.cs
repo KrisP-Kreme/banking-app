@@ -21,7 +21,7 @@ namespace BankingApplication.Migrations
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     City = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     State = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
-                    Postcode = table.Column<int>(type: "int", maxLength: 4, nullable: false),
+                    Postcode = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: true),
                     Mobile = table.Column<int>(type: "int", maxLength: 12, nullable: false)
                 },
                 constraints: table =>
@@ -160,7 +160,8 @@ namespace BankingApplication.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Logins_CustomerID",
                 table: "Logins",
-                column: "CustomerID");
+                column: "CustomerID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_AccountNumber",

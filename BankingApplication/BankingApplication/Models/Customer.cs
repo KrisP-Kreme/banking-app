@@ -24,10 +24,12 @@ public class Customer
     public string State { get; set; }
 
     [StringLength(4)]
-    public int Postcode { get; set; }
+    public string Postcode { get; set; }
 
     [StringLength(12)]
     public int Mobile { get; set; }
-        
+
+    public Login Login { get; set; }
+
     public virtual List<Account> Accounts { get; set; }
 }

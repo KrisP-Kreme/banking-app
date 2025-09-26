@@ -5,8 +5,8 @@ namespace BankingApplication.Models;
 
 public enum AccountType
 {
-    Checking = 1,
-    Saving = 2,
+    C,
+    S,
 }
 
 public class Account

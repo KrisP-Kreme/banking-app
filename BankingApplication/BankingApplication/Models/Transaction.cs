@@ -31,7 +31,7 @@ public class Transaction
 
     [Required]
     [Column(TypeName = "money")]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     [StringLength(30), RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
     public string? Comment { get; set; }

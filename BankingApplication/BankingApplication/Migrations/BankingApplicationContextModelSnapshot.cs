@@ -94,9 +94,9 @@ namespace BankingApplication.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Postcode")
+                    b.Property<string>("Postcode")
                         .HasMaxLength(4)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("State")
                         .HasMaxLength(3)
@@ -127,7 +127,8 @@ namespace BankingApplication.Migrations
 
                     b.HasKey("LoginID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
@@ -240,8 +241,8 @@ namespace BankingApplication.Migrations
             modelBuilder.Entity("BankingApplication.Models.Login", b =>
                 {
                     b.HasOne("BankingApplication.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
+                        .WithOne("Login")
+                        .HasForeignKey("BankingApplication.Models.Login", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -273,6 +274,8 @@ namespace BankingApplication.Migrations
             modelBuilder.Entity("BankingApplication.Models.Customer", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("Login");
                 });
 #pragma warning restore 612, 618
         }

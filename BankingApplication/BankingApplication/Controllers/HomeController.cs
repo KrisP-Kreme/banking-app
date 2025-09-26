@@ -72,7 +72,7 @@ public class HomeController : Controller
             new Transaction
             {
                 TransactionType = TransactionType.D,
-                Amount = (double)viewModel.Amount,
+                Amount = (decimal)viewModel.Amount,
                 TransactionTimeUtc = DateTime.UtcNow,
                 AccountNumber = viewModel.AccountNumber
             });
