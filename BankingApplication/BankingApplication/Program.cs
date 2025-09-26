@@ -13,6 +13,13 @@ builder.Services.AddDbContext<BankingApplicationContext>(options =>
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    // Make the session cookie essential.
+    options.Cookie.IsEssential = true;
+});
+
 
 var app = builder.Build();
 
@@ -41,8 +48,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseAuthorization();
+app.UseSession();
 
 app.MapStaticAssets();
 
