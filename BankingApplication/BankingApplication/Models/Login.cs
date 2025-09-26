@@ -6,7 +6,7 @@ namespace BankingApplication.Models;
 public class Login
 {
     [Required, StringLength(8)]
-    public char LoginID { get; set; }
+    public string LoginID { get; set; }
 
     [ForeignKey(nameof(Customer))]
     public int CustomerID { get; set; }
@@ -14,5 +14,5 @@ public class Login
 
     [Column(TypeName = "char")]
     [Required, StringLength(94)]
-    public char PasswordHash { get; set; }
+    public string PasswordHash { get; set; }
 }

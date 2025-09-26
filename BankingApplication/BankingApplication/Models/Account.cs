@@ -12,6 +12,7 @@ public enum AccountType
 public class Account
 {
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [Key]
     public int AccountNumber { get; set; }
 
     [Required, Display(Name = "Type")]

@@ -14,7 +14,8 @@ public enum TransactionType
 
 public class Transaction
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int TransactionID { get; set; }
 
     [Required]
