@@ -131,6 +131,12 @@ public class HomeController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Remove(SessionKey_CustomerID);
+        return RedirectToAction(nameof(Login));
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() =>
         View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
