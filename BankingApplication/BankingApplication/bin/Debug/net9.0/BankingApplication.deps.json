@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore.Design": "9.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.9",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.9",
-          "Newtonsoft.Json": "13.0.4"
+          "Newtonsoft.Json": "13.0.4",
+          "SimpleHashing.Net": "2.1.0"
         },
         "runtime": {
           "BankingApplication.dll": {}
@@ -748,6 +749,14 @@
           }
         }
       },
+      "SimpleHashing.Net/2.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/SimpleHashing.Net.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2",
@@ -1347,6 +1356,13 @@
       "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A==",
       "path": "newtonsoft.json/13.0.4",
       "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
+    },
+    "SimpleHashing.Net/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mx9W9YjQxEP8Lma/RVbDsS0dHKV5lEb3vldWdxgvD4o625To0XtxWroNcDR8cPdtANgTTo9QKjryZzHDjbonhg==",
+      "path": "simplehashing.net/2.1.0",
+      "hashPath": "simplehashing.net.2.1.0.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",

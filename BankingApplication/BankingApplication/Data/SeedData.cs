@@ -50,12 +50,22 @@ public static class SeedData
 
             foreach (var a in c.Accounts)
             {
+                decimal balance = 0;
+
+                if (a.Transactions != null && a.Transactions.Count != 0)
+                {
+                    foreach(var t in a.Transactions)
+                    {
+                        balance += t.Amount;
+                    }
+                }
+
                 var account = new Account
                 {
                     AccountNumber = a.AccountNumber,
                     AccountType = a.AccountType,
                     CustomerID = a.CustomerID,
-                    Balance = a.Balance
+                    Balance = balance
                 };
 
                 context.Accounts.Add(account);
