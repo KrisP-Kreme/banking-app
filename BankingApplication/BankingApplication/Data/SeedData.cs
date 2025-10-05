@@ -1,6 +1,5 @@
 ﻿using BankingApplication.Data;
 using BankingApplication.Models;
-using BankingApplication.Models;
 using Newtonsoft.Json;
 
 namespace BankingApplication.Data;
