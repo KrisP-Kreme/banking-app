@@ -1,4 +1,4 @@
-﻿namespace McbaExample.ViewModels;
+﻿namespace BankingApplication.ViewModels;
 
 public class LoginViewModel
 {

@@ -1,4 +1,4 @@
-﻿namespace McbaExample.Utilities;
+﻿namespace BankingApplication.Utilities;
 
 public static class MiscellaneousExtensionUtilities
 {

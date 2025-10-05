@@ -1,9 +1,9 @@
 ﻿using BankingApplication.Data;
 using BankingApplication.Models;
-using McbaExample.Models;
+using BankingApplication.Models;
 using Newtonsoft.Json;
 
-namespace McbaExample.Data;
+namespace BankingApplication.Data;
 
 public static class SeedData
 {
