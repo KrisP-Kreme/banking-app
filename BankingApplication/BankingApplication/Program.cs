@@ -1,5 +1,4 @@
 using BankingApplication.Data;
-using McbaExample.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

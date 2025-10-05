@@ -10,3 +10,5 @@ obj/
 *.pdb
 *.cache
 *.log
+
+appsettings.json

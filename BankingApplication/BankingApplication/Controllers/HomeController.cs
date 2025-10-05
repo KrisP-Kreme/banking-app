@@ -1,13 +1,13 @@
 using BankingApplication.Data;
 using BankingApplication.Models;
-using McbaExample.Utilities;
-using McbaExample.ViewModels;
+using BankingApplication.Utilities;
+using BankingApplication.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using SimpleHashing.Net;
 
-namespace McbaExample.Controllers;
+namespace BankingApplication.Controllers;
 
 public class HomeController : Controller    
 {
@@ -37,56 +37,6 @@ public class HomeController : Controller
             FirstOrDefaultAsync(x => x.CustomerID == customerID);
 
         return View(customer);
-    }
-
-    public async Task<IActionResult> Deposit(int accountNumber)
-    {
-        return View(
-            new DepositViewModel
-            {
-                AccountNumber = accountNumber,
-                Account = await _context.Accounts.FindAsync(accountNumber)
-            });
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Deposit(DepositViewModel viewModel)
-    {
-        viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
-
-        // Note this code could be moved out of the controller, e.g., into the model, business objects, facade,
-        // validators, etc...
-        if (viewModel.Account == null)
-        {
-            ModelState.AddModelError("", "Account not found.");
-            return View(viewModel);
-        }
-
-        if (viewModel.Amount <= 0)
-        {
-            ModelState.AddModelError(nameof(viewModel.Amount), "Amount must be positive.");
-            return View(viewModel);
-        }
-        if (viewModel.Amount.HasMoreThanTwoDecimalPlaces())
-        {
-            ModelState.AddModelError(nameof(viewModel.Amount), "Amount cannot have more than 2 decimal places.");
-            return View(viewModel);
-        }
-
-        // Note this code could be moved out of the controller, e.g., into the model or repository (design pattern).
-        viewModel.Account.Balance += viewModel.Amount;
-        _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.D,
-                Amount = (decimal)viewModel.Amount,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber
-            });
-
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
     }
 
     public IActionResult Privacy() => View();
@@ -139,5 +89,5 @@ public class HomeController : Controller
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() =>
-        View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        View(new ViewModels.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }

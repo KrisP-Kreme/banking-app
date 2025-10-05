@@ -1,4 +1,4 @@
-namespace McbaExample.Models;
+namespace BankingApplication.ViewModels;
 
 public class ErrorViewModel
 {
