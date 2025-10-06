@@ -35,17 +35,17 @@ public class TransactionController : Controller
 
     public async Task<IActionResult> Deposit(int accountNumber)
     {
-        return View(
-            new TransactionViewModel
-            {
-                AccountNumber = accountNumber,
-                Account = await _context.Accounts.FindAsync(accountNumber)
-            });
+        return View(new TransactionViewModel
+        {
+            AccountNumber = accountNumber,
+            Account = await _context.Accounts.FindAsync(accountNumber)
+        });
     }
 
     [HttpPost]
     public async Task<IActionResult> Deposit(TransactionViewModel viewModel)
     {
+        // Validate input
         viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
 
         // Note this code could be moved out of the controller, e.g., into the model, business objects, facade,
@@ -67,22 +67,120 @@ public class TransactionController : Controller
             return View(viewModel);
         }
 
-        // Note this code could be moved out of the controller, e.g., into the model or repository (design pattern).
-        viewModel.Account.Balance += viewModel.Amount;
-        _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.D,
-                Amount = (decimal)viewModel.Amount,
-                Comment = viewModel.Comment,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber
-            });
+        TempData["TransacType"] = "Deposit";
+        return View("ConfirmTransaction", viewModel);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ConfirmTransaction(TransactionViewModel viewModel, string action, string transacType)
+    {
+        if (action == "Cancel")
+            return RedirectToAction("Index"); 
+
+        viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
+        if (viewModel.Account == null)
+        {
+            ModelState.AddModelError("", "Account not found.");
+            return View(viewModel);
+        }
+        int numTransactions = await _context.Transactions.CountAsync(tc => (tc.TransactionType == TransactionType.W || (tc.TransactionType == TransactionType.T && tc.DestinationAccountNumber != null)) && tc.AccountNumber == viewModel.Account.AccountNumber);
+
+        switch (transacType)
+        {
+            case "Deposit":
+                viewModel.Account.Balance += viewModel.Amount;
+
+                _context.Transactions.Add(new Transaction
+                {
+                    TransactionType = TransactionType.D,
+                    Amount = viewModel.Amount,
+                    Comment = viewModel.Comment,
+                    TransactionTimeUtc = DateTime.UtcNow,
+                    AccountNumber = viewModel.Account.AccountNumber
+                });
+
+                break;
+
+            case "Withdraw":
+                if (numTransactions >= 2)
+                {
+                    viewModel.Account.Balance -= (decimal)0.01;
+                    _context.Transactions.Add(
+                    new Transaction
+                    {
+                        TransactionType = TransactionType.S,
+                        Amount = (decimal)0.01,
+                        TransactionTimeUtc = DateTime.UtcNow,
+                        AccountNumber = viewModel.AccountNumber
+
+                    });
+                }
+
+                viewModel.Account.Balance -= viewModel.Amount;
+                _context.Transactions.Add(
+                    new Transaction
+                    {
+                        TransactionType = TransactionType.W,
+                        Amount = (decimal)viewModel.Amount,
+                        Comment = viewModel.Comment,
+                        TransactionTimeUtc = DateTime.UtcNow,
+                        AccountNumber = viewModel.AccountNumber
+                    });
+                break;
+
+            case "Transfer":
+                // service charge for >2 transactions
+                if (numTransactions >= 2)
+                {
+                    viewModel.Account.Balance -= (decimal)0.05;
+                    _context.Transactions.Add(
+                    new Transaction
+                    {
+                        TransactionType = TransactionType.S,
+                        Amount = (decimal)0.05,
+                        TransactionTimeUtc = DateTime.UtcNow,
+                        AccountNumber = viewModel.AccountNumber
+
+                    });
+                }
+
+                // deduct from current account
+                viewModel.Account.Balance -= viewModel.Amount;
+                _context.Transactions.Add(
+                    new Transaction
+                    {
+                        TransactionType = TransactionType.T,
+                        Amount = (decimal)viewModel.Amount,
+                        Comment = viewModel.Comment,
+                        TransactionTimeUtc = DateTime.UtcNow,
+                        AccountNumber = viewModel.AccountNumber,
+                        DestinationAccountNumber = viewModel.DestinationAccountNumber
+                    });
+
+                // add to account we're transferring to
+                Account destAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == viewModel.DestinationAccountNumber);
+                destAccount.Balance += viewModel.Amount;
+
+                _context.Transactions.Add(
+                    new Transaction
+                    {
+                        TransactionType = TransactionType.T,
+                        Amount = (decimal)viewModel.Amount,
+                        TransactionTimeUtc = DateTime.UtcNow,
+                        AccountNumber = destAccount.AccountNumber
+                    });
+                break;
+
+            default:
+                ModelState.AddModelError("", "Invalid transaction type.");
+                return View(viewModel);
+        }
 
         await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction("Index");
     }
+
+
     public async Task<IActionResult> Withdraw(int accountNumber)
     {
         return View(
@@ -159,38 +257,10 @@ public class TransactionController : Controller
                     return View(viewModel);
                 }
             }
-            
+
         }
-
-        if (numTransactions >= 2)
-        {
-            viewModel.Account.Balance -= (decimal)0.01;
-            _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.S,
-                Amount = (decimal)0.01,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber
-
-            });
-        }
-
-        // if no instance of failure
-        viewModel.Account.Balance -= viewModel.Amount;
-        _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.W,
-                Amount = (decimal)viewModel.Amount,
-                Comment = viewModel.Comment,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber
-            });
-
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
+        TempData["TransacType"] = "Withdraw";
+        return View("ConfirmTransaction", viewModel);
     }
 
     public async Task<IActionResult> Transfer(int accountNumber)
@@ -203,9 +273,6 @@ public class TransactionController : Controller
             });
     }
 
-    //Transfer requires destination account number
-    //vm takes in the dest acc number too if we ask for it.
-    // TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     [HttpPost]
     public async Task<IActionResult> Transfer(TransactionViewModel viewModel)
     {
@@ -220,7 +287,6 @@ public class TransactionController : Controller
             return View(viewModel);
         }
 
-        // TODO: if account is not in the list of accounts in db
         var accNums = await _context.Accounts.Where(a => a.AccountNumber != viewModel.AccountNumber).Select(a => a.AccountNumber).ToListAsync();
         bool accExist = false;
         bool ownAcc = false;
@@ -304,49 +370,7 @@ public class TransactionController : Controller
 
         }
 
-        // service charge for >2 transactions
-        if (numTransactions >= 2)
-        {
-            viewModel.Account.Balance -= (decimal)0.05;
-            _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.S,
-                Amount = (decimal)0.05,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber
-
-            });
-        }
-
-        // deduct from current account
-        viewModel.Account.Balance -= viewModel.Amount;
-        _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.T,
-                Amount = (decimal)viewModel.Amount,
-                Comment = viewModel.Comment,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = viewModel.AccountNumber,
-                DestinationAccountNumber = viewModel.DestinationAccountNumber
-            });
-
-        // add to account we're transferring to
-        Account destAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNumber == viewModel.DestinationAccountNumber);
-        destAccount.Balance += viewModel.Amount;
-
-        _context.Transactions.Add(
-            new Transaction
-            {
-                TransactionType = TransactionType.T,
-                Amount = (decimal)viewModel.Amount,
-                TransactionTimeUtc = DateTime.UtcNow,
-                AccountNumber = destAccount.AccountNumber
-            });
-
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
+        TempData["TransacType"] = "Transfer";
+        return View("ConfirmTransaction", viewModel);
     }
 }
