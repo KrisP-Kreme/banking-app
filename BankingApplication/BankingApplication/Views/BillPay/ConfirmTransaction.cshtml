@@ -1,0 +1,32 @@
+@model BankingApplication.ViewModels.TransactionViewModel
+
+@{
+    var transacType = TempData["TransacType"]?.ToString();
+    ViewData["Title"] = $"Confirm {transacType}";
+}
+
+<h2>Confirm @transacType</h2>
+
+<p>Please confirm the details of your transaction:</p>
+
+<table class="table">
+    <tr><th>Account Number</th><td>@Model.AccountNumber</td></tr>
+    @if (Model.DestinationAccountNumber != null)
+    {
+        <tr><th>Destination Account</th><td>@Model.DestinationAccountNumber</td></tr>
+    }
+    <tr><th>Amount</th><td>$@Model.Amount.ToString("0.00")</td></tr>
+    <tr><th>Comment</th><td>@Model.Comment</td></tr>
+</table>
+
+<form asp-action="ConfirmTransaction" method="post">
+    <input type="hidden" name="TransacType" value="@TempData["TransacType"]" />
+    <input type="hidden" asp-for="AccountNumber" />
+    <input type="hidden" asp-for="DestinationAccountNumber" />
+    <input type="hidden" asp-for="Amount" />
+    <input type="hidden" asp-for="Comment" />
+
+    <button type="submit" name="action" value="Confirm" class="btn btn-success">Confirm</button>
+    <button type="submit" name="action" value="Cancel" class="btn btn-secondary">Cancel</button>
+
+</form>
