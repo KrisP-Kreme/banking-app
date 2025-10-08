@@ -24,7 +24,10 @@ public class BillPayController : Controller
     {
         var viewModel = new BillPayViewModel
         {
-            BillPay = new BillPay(),
+            BillPay = new BillPay
+            {
+                AccountNumber = accountNumber
+            },
             Payees = _context.Payees.ToList()
         };
 
@@ -49,13 +52,9 @@ public class BillPayController : Controller
 
     public async Task<IActionResult> Index()
     {
-        // Lazy loading.
-        // The Customer.Accounts property will be lazy loaded upon demand.
-        //var customer = await _context.Customers.FindAsync(CustomerID);
-
-        // OR
-        // Eager loading. (because we're using viewmodel, so we don't link to the model directly)
         var customer = await _context.Customers.Include(x => x.Accounts).
+            ThenInclude(x => x.BillPays).
+            ThenInclude(x => x.Payee).
             FirstOrDefaultAsync(x => x.CustomerID == CustomerID);
 
         return View(customer);

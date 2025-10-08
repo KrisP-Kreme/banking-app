@@ -18,13 +18,15 @@
                     <th>Payee</th>
                     <th>Amount</th>
                     <th>Scheduled Date</th>
+                    <th>Period</th>
                 </tr>
                 @foreach (var bill in account.BillPays)
                 {
                     <tr>
-                        <td>@bill.Payee</td>
+                        <td>@bill.Payee.Name</td>
                         <td>@($"${bill.Amount:0.00}")</td>
                         <td>@bill.ScheduleTimeUtc.ToString("dd/MM/yyyy")</td>
+                        <td>@bill.Period</td>
                     </tr>
                 }
             </table>
