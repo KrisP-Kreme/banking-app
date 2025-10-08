@@ -222,7 +222,7 @@ namespace BankingApplication.Migrations
             modelBuilder.Entity("BankingApplication.Models.BillPay", b =>
                 {
                     b.HasOne("BankingApplication.Models.Account", "Account")
-                        .WithMany()
+                        .WithMany("BillPays")
                         .HasForeignKey("AccountNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -268,6 +268,8 @@ namespace BankingApplication.Migrations
 
             modelBuilder.Entity("BankingApplication.Models.Account", b =>
                 {
+                    b.Navigation("BillPays");
+
                     b.Navigation("Transactions");
                 });
 

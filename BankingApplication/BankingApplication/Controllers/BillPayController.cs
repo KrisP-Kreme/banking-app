@@ -19,6 +19,34 @@ public class BillPayController : Controller
         _context = context;
     }
 
+    [HttpGet]
+    public IActionResult Create(int accountNumber)
+    {
+        var viewModel = new BillPayViewModel
+        {
+            BillPay = new BillPay(),
+            Payees = _context.Payees.ToList()
+        };
+
+        return View(viewModel);
+
+    }
+
+    [HttpPost]
+    public IActionResult Create(BillPayViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+        {
+            viewModel.Payees = _context.Payees.ToList();
+            return View(viewModel);
+        }
+
+        _context.BillPays.Add(viewModel.BillPay);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
+
     public async Task<IActionResult> Index()
     {
         // Lazy loading.

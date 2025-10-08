@@ -6,36 +6,43 @@
 <div>
     <h1 class="display-4">Welcome, @Model.Name</h1>
 
-    <h3>Your Accounts</h3>
-    <table class="table">
-        <tr>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountNumber)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountType)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].Balance)</th>
-            <th></th>
-        </tr>
-        @foreach (var account in Model.Accounts)
+    <h3>Current Scheduled Payments</h3>
+
+    @foreach (var account in Model.Accounts)
+    {
+        <h5>Account: @account.AccountNumber</h5>
+        @if (account.BillPays != null && account.BillPays.Any())
         {
-            <tr>
-                <td>@Html.DisplayFor(x => account.AccountNumber)</td>
-                <td>@Html.DisplayFor(x => account.AccountType)</td>
-                <td>@($"${account.Balance:0.00;-0.00}")</td>
-
-
-                @* <td>@Html.DisplayFor(x => account.Balance)</td> *@
-                <td>
-                    <a class="btn btn-primary"
-                       asp-action="Deposit" asp-route-accountNumber="@account.AccountNumber">Deposit</a>
-                </td>
-                <td>
-                    <a class="btn btn-primary"
-                       asp-action="Withdraw" asp-route-accountNumber="@account.AccountNumber">Withdraw</a>
-                </td>
-                <td>
-                    <a class="btn btn-primary"
-                       asp-action="Transfer" asp-route-accountNumber="@account.AccountNumber">Transfer</a>
-                </td>
-            </tr>
+            <table class="table table-striped">
+                <tr>
+                    <th>Payee</th>
+                    <th>Amount</th>
+                    <th>Scheduled Date</th>
+                </tr>
+                @foreach (var bill in account.BillPays)
+                {
+                    <tr>
+                        <td>@bill.Payee</td>
+                        <td>@($"${bill.Amount:0.00}")</td>
+                        <td>@bill.ScheduleTimeUtc.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </table>
         }
-    </table>
+        else
+        {
+            <p><em>No scheduled payments for this account.</em></p>
+        }
+
+
+        <a asp-controller="BillPay"
+           asp-action="Create"
+           asp-route-accountNumber="@account.AccountNumber"
+           class="btn btn-success">
+            + Add Bill Payment
+        </a>
+
+        <hr />
+    }
+
 </div>

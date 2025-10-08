@@ -33,7 +33,7 @@ public class HomeController : Controller
         }
 
         // Eager loading.
-        var customer = await _context.Customers.Include(x => x.Accounts).
+        var customer = await _context.Customers.Include(x => x.Accounts).ThenInclude(x => x.BillPays).
             FirstOrDefaultAsync(x => x.CustomerID == customerID);
 
         return View(customer);
