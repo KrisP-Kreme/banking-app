@@ -17,16 +17,27 @@
                 <tr>
                     <th>Payee</th>
                     <th>Amount</th>
-                    <th>Scheduled Date</th>
+                    <th>Scheduled Date & Time</th>
                     <th>Period</th>
+                    <th>Action</th>
+                    <th>Status</th>
                 </tr>
                 @foreach (var bill in account.BillPays)
                 {
                     <tr>
                         <td>@bill.Payee.Name</td>
                         <td>@($"${bill.Amount:0.00}")</td>
-                        <td>@bill.ScheduleTimeUtc.ToString("dd/MM/yyyy")</td>
+                        <td>@bill.ScheduleTimeUtc.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
                         <td>@bill.Period</td>
+                        <td>
+                            <form asp-controller="BillPay" asp-action="Cancel" method="post">
+                                <input type="hidden" name="id" value="@bill.BillPayID" />
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Cancel
+                                </button>
+                            </form>
+                        </td>
+                        <td>@bill.Status</td>
                     </tr>
                 }
             </table>
