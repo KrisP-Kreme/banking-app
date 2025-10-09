@@ -72,4 +72,18 @@ public class BillPayController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Retry(int id)
+    {
+        var billPay = await _context.BillPays.FindAsync(id);
+        if (billPay == null) return NotFound();
+
+        billPay.Status = BillPayStatus.Pending;
+        billPay.ScheduleTimeUtc = DateTime.UtcNow.AddMinutes(1);
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+
 }

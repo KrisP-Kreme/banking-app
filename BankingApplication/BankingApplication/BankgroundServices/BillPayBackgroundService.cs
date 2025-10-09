@@ -46,30 +46,25 @@ public class BillPayBackgroundService : BackgroundService
 
         foreach (var bill in duePayments)
         {
-            try
-            {
-                var account = bill.Account;
-                if (account.Balance >= (decimal)bill.Amount)
-                {
-                    account.Balance -= (decimal)bill.Amount;
-                    bill.Status = BillPayStatus.Paid;
 
-                    //if monthly, schedule next month
-                    if (bill.Period == Period.Monthly)
-                    {
-                        bill.ScheduleTimeUtc = bill.ScheduleTimeUtc.AddMonths(1);
-                        bill.Status = BillPayStatus.Pending;
-                    }
-                }
-                else
+            var account = bill.Account;
+            if (account.Balance >= (decimal)bill.Amount)
+            {
+                account.Balance -= (decimal)bill.Amount;
+                bill.Status = BillPayStatus.Paid;
+
+                //if monthly, schedule next month
+                if (bill.Period == Period.Monthly)
                 {
-                    bill.Status = BillPayStatus.Failed;
+                    bill.ScheduleTimeUtc = bill.ScheduleTimeUtc.AddMonths(1);
+                    bill.Status = BillPayStatus.Pending;
                 }
             }
-            catch
+            else
             {
                 bill.Status = BillPayStatus.Failed;
             }
+            
         }
 
         await context.SaveChangesAsync(cancellationToken);
