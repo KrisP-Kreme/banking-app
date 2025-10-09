@@ -1,3 +1,4 @@
+using BankingApplication.BankgroundServices;
 using BankingApplication.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BankingApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(BankingApplicationContext))));
+
+builder.Services.AddHostedService<BillPayBackgroundService>();
 
 
 builder.Services.AddControllersWithViews();

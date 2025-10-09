@@ -1,0 +1,36 @@
+﻿@model BankingApplication.ViewModels.BillPayViewModel
+
+<h2>Schedule a Bill Payment</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="BillPay.AccountNumber" />
+    <div class="form-group">
+        <label asp-for="BillPay.PayeeID">Select Payee</label>
+        <select asp-for="BillPay.PayeeID" class="form-control"
+                asp-items="@(new SelectList(Model.Payees, "PayeeID", "Name"))">
+            <option value="">-- Choose Payee --</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.Amount">Amount</label>
+        <input asp-for="BillPay.Amount" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.ScheduleTimeUtc">Scheduled Date</label>
+        <input asp-for="BillPay.ScheduleTimeUtc" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.Period" class="control-label"></label>
+        <select asp-for="BillPay.Period" class="form-control"
+                asp-items="Html.GetEnumSelectList<BankingApplication.Models.Period>()">
+            <option value="">-- Select Period --</option>
+        </select>
+        <span asp-validation-for="BillPay.Period" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

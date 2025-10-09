@@ -84,6 +84,42 @@ public static class SeedData
 
 
         }
+
+        if (!context.Payees.Any())
+        {
+            context.Payees.AddRange(
+                new Payee
+                {
+                    PayeeID = 1,
+                    Name = "Macrohard",
+                    Address = "99 Smith Street",
+                    City = "Melbourne",
+                    State = "VIC",
+                    Postcode = "3000",
+                    Phone = 99320012
+                },
+                new Payee
+                {
+                    PayeeID = 2,
+                    Name = "Orange",
+                    Address = "31 Boardwalk Street",
+                    City = "Melbourne",
+                    State = "VIC",
+                    Postcode = "3000",
+                    Phone = 30991233
+                },
+                new Payee
+                {
+                    PayeeID = 3,
+                    Name = "MeTunnel",
+                    Address = "41 Nelson Street",
+                    City = "Melbourne",
+                    State = "VIC",
+                    Postcode = "3000",
+                    Phone = 10223999
+                }
+            );
+        }
             
         context.SaveChanges();
     }
