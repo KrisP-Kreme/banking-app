@@ -26,7 +26,8 @@ public class BillPayController : Controller
         {
             BillPay = new BillPay
             {
-                AccountNumber = accountNumber
+                AccountNumber = accountNumber,
+                ScheduleTimeUtc = DateTime.UtcNow
             },
             Payees = _context.Payees.ToList()
         };

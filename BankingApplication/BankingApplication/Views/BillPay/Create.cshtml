@@ -1,4 +1,7 @@
 ﻿@model BankingApplication.ViewModels.BillPayViewModel
+@{
+    ViewData["Title"] = "Schedule BillPay";
+}
 
 <h2>Schedule a Bill Payment</h2>
 
@@ -10,6 +13,7 @@
                 asp-items="@(new SelectList(Model.Payees, "PayeeID", "Name"))">
             <option value="">-- Choose Payee --</option>
         </select>
+        <span asp-validation-for="BillPay.PayeeID" class="text-danger"></span>
     </div>
 
     <div class="form-group">
