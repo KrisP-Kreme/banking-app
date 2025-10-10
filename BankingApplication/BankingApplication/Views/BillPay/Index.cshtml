@@ -4,73 +4,84 @@
 }
 
 <div>
-    
 
-    <h3>Current Scheduled Payments</h3>
+
+    <div class="text-center mb-4 my-5">
+        <h1 class="fw-bold text-teal">Current Scheduled Payments </h1>
+    </div>
 
     @foreach (var account in Model.Accounts)
     {
-        <h5>Account: @account.AccountNumber</h5>
+        <h5 class="my-2">Account: @account.AccountNumber</h5>
         @if (account.BillPays != null && account.BillPays.Any())
         {
-            <table class="table table-striped">
-                <tr>
-                    <th>Payee</th>
-                    <th>Amount</th>
-                    <th>Scheduled Date & Time</th>
-                    <th>Period</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                @foreach (var bill in account.BillPays)
-                {
-                    <tr>
-                        <td>@bill.Payee.Name</td>
-                        <td>@($"${bill.Amount:0.00}")</td>
-                        <td>@bill.ScheduleTimeUtc.ToLocalTime().ToString("dd/MM/yyyy - HH:mm")</td>
-                        <td>@bill.Period</td>
-                        <td>
-                        @if (bill.Status == BillPayStatus.Failed)
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="fw-bold card-header text-white text-center fw-semibold" style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Scheduled Payments
+            </div>
+            <div class="card-body bg-light rounded-bottom-4">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Payee</th>
+                            <th>Amount</th>
+                            <th>Scheduled Date & Time</th>
+                            <th>Period</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        @foreach (var bill in account.BillPays)
                         {
-                            <span class="text-danger fw-bold">Failed for reason: <br />INSUFFICIENT FUNDS</span>
-                            <div class="mt-2">
-                                <form asp-controller="BillPay" asp-action="Retry" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" value="@bill.BillPayID" />
-                                    <button type="submit" class="btn btn-warning btn-sm">Retry</button>
-                                </form>
-                            </div>
+                            <tr>
+                                <td class="fw-semibold">@bill.Payee.Name</td>
+                                <td class="text-success fw-semibold">@($"${bill.Amount:0.00}")</td>
+                                <td>@bill.ScheduleTimeUtc.ToLocalTime().ToString("dd/MM/yyyy - HH:mm")</td>
+                                <td>@bill.Period</td>
+                                <td>
+                                @if (bill.Status == BillPayStatus.Failed)
+                                {
+                                    <span class="text-danger fw-bold">Failed for reason: <br />INSUFFICIENT FUNDS</span>
+                                    <div class="mt-2">
+                                        <form asp-controller="BillPay" asp-action="Retry" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@bill.BillPayID" />
+                                            <button type="submit" class="btn btn-warning btn-sm">Retry</button>
+                                        </form>
+                                    </div>
+                                }
+                                else if (bill.Status == BillPayStatus.Pending)
+                                {
+                                    <span class="text-primary">Pending</span>
+                                }
+                                else if (bill.Status == BillPayStatus.Paid)
+                                {
+                                    <span class="text-success">Paid</span>
+                                }
+                                </td>
+                                <td>
+                                    @if (bill.Status == BillPayStatus.Paid)
+                                    {
+                                        <form asp-controller="BillPay" asp-action="Cancel" method="post">
+                                            <input type="hidden" name="id" value="@bill.BillPayID" />
+                                            <button type="submit" class="btn btn-secondary btn-sm">
+                                                Clear
+                                            </button>
+                                        </form>
+                                    }
+                                    else {
+                                        <form asp-controller="BillPay" asp-action="Cancel" method="post">
+                                            <input type="hidden" name="id" value="@bill.BillPayID" />
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Cancel
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
                         }
-                        else if (bill.Status == BillPayStatus.Pending)
-                        {
-                            <span class="text-primary">Pending</span>
-                        }
-                        else if (bill.Status == BillPayStatus.Paid)
-                        {
-                            <span class="text-success">Paid</span>
-                        }
-                        </td>
-                        <td>
-                            @if (bill.Status == BillPayStatus.Paid)
-                            {
-                                <form asp-controller="BillPay" asp-action="Cancel" method="post">
-                                    <input type="hidden" name="id" value="@bill.BillPayID" />
-                                    <button type="submit" class="btn btn-secondary btn-sm">
-                                        Clear
-                                    </button>
-                                </form>
-                            }
-                            else {
-                                <form asp-controller="BillPay" asp-action="Cancel" method="post">
-                                    <input type="hidden" name="id" value="@bill.BillPayID" />
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        Cancel
-                                    </button>
-                                </form>
-                            }
-                        </td>
-                    </tr>
-                }
-            </table>
+                    </table>
+                </div>
+            </div>
+        </div>
         }
         else
         {
@@ -81,7 +92,7 @@
         <a asp-controller="BillPay"
            asp-action="Create"
            asp-route-accountNumber="@account.AccountNumber"
-           class="btn btn-success">
+           class="btn btn-success my-3">
             + Add Bill Payment
         </a>
 

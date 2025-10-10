@@ -3,38 +3,56 @@
     ViewData["Title"] = "Schedule BillPay";
 }
 
-<h2>Schedule a Bill Payment</h2>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header text-center" style="background-color: #0ed2f7; color: white; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                    <h3 class="mb-0">Schedule a Bill Payment</h3>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Create" method="post">
+                        <input type="hidden" asp-for="BillPay.AccountNumber" />
 
-<form asp-action="Create" method="post">
-    <input type="hidden" asp-for="BillPay.AccountNumber" />
-    <div class="form-group">
-        <label asp-for="BillPay.PayeeID">Select Payee</label>
-        <select asp-for="BillPay.PayeeID" class="form-control"
-                asp-items="@(new SelectList(Model.Payees, "PayeeID", "Name"))">
-            <option value="">-- Choose Payee --</option>
-        </select>
-        <span asp-validation-for="BillPay.PayeeID" class="text-danger"></span>
+                        <div class="mb-3">
+                            <label asp-for="BillPay.PayeeID" class="form-label fw-semibold">Select Payee</label>
+                            <select asp-for="BillPay.PayeeID" class="form-select"
+                                    asp-items="@(new SelectList(Model.Payees, "PayeeID", "Name"))">
+                                <option value="">-- Choose Payee --</option>
+                            </select>
+                            <span asp-validation-for="BillPay.PayeeID" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BillPay.Amount" class="form-label fw-semibold">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="BillPay.Amount" class="form-control" placeholder="Enter amount" />
+                            </div>
+                            <span asp-validation-for="BillPay.Amount" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BillPay.ScheduleTimeUtc" class="form-label fw-semibold">Scheduled Date & Time</label>
+                            <input asp-for="BillPay.ScheduleTimeUtc" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="BillPay.ScheduleTimeUtc" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BillPay.Period" class="form-label fw-semibold">Payment Period</label>
+                            <select asp-for="BillPay.Period" class="form-select"
+                                    asp-items="Html.GetEnumSelectList<BankingApplication.Models.Period>()">
+                                <option value="">-- Select Period --</option>
+                            </select>
+                            <span asp-validation-for="BillPay.Period" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <input type="submit" value="Schedule a Payment" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="BillPay.Amount">Amount</label>
-        <input asp-for="BillPay.Amount" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="BillPay.ScheduleTimeUtc">Scheduled Date</label>
-        <input asp-for="BillPay.ScheduleTimeUtc" type="datetime-local" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="BillPay.Period" class="control-label"></label>
-        <select asp-for="BillPay.Period" class="form-control"
-                asp-items="Html.GetEnumSelectList<BankingApplication.Models.Period>()">
-            <option value="">-- Select Period --</option>
-        </select>
-        <span asp-validation-for="BillPay.Period" class="text-danger"></span>
-    </div>
-
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

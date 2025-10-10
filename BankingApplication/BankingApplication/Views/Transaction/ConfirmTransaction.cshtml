@@ -5,28 +5,39 @@
     ViewData["Title"] = $"Confirm {transacType}";
 }
 
-<h2>Confirm @transacType</h2>
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1>Confirm @transacType</h1>
+    </div>
 
-<p>Please confirm the details of your transaction:</p>
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="fw-bold card-header text-white text-center fw-semibold" style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Transaction Details
+        </div>
+        <div class="card-body bg-light rounded-bottom-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <tr><th>Account Number</th><td>@Model.AccountNumber</td></tr>
+                    @if (Model.DestinationAccountNumber != null)
+                    {
+                        <tr><th>Destination Account</th><td>@Model.DestinationAccountNumber</td></tr>
+                    }
+                    <tr><th>Amount</th><td>$@Model.Amount.ToString("0.00")</td></tr>
+                    <tr><th>Comment</th><td>@Model.Comment</td></tr>
+                </table>
 
-<table class="table">
-    <tr><th>Account Number</th><td>@Model.AccountNumber</td></tr>
-    @if (Model.DestinationAccountNumber != null)
-    {
-        <tr><th>Destination Account</th><td>@Model.DestinationAccountNumber</td></tr>
-    }
-    <tr><th>Amount</th><td>$@Model.Amount.ToString("0.00")</td></tr>
-    <tr><th>Comment</th><td>@Model.Comment</td></tr>
-</table>
+                <form asp-action="ConfirmTransaction" method="post">
+                    <input type="hidden" name="TransacType" value="@TempData["TransacType"]" />
+                    <input type="hidden" asp-for="AccountNumber" />
+                    <input type="hidden" asp-for="DestinationAccountNumber" />
+                    <input type="hidden" asp-for="Amount" />
+                    <input type="hidden" asp-for="Comment" />
 
-<form asp-action="ConfirmTransaction" method="post">
-    <input type="hidden" name="TransacType" value="@TempData["TransacType"]" />
-    <input type="hidden" asp-for="AccountNumber" />
-    <input type="hidden" asp-for="DestinationAccountNumber" />
-    <input type="hidden" asp-for="Amount" />
-    <input type="hidden" asp-for="Comment" />
+                    <button type="submit" name="action" value="Confirm" class="btn btn-success">Confirm</button>
+                    <button type="submit" name="action" value="Cancel" class="btn btn-secondary">Cancel</button>
 
-    <button type="submit" name="action" value="Confirm" class="btn btn-success">Confirm</button>
-    <button type="submit" name="action" value="Cancel" class="btn btn-secondary">Cancel</button>
-
-</form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

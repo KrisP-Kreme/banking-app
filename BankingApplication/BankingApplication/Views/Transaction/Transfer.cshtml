@@ -3,43 +3,60 @@
     ViewData["Title"] = "Transfer";
 }
 
-<h1 class="display-4">Account Number @Model.Account.AccountNumber (@Model.Account.AccountType)</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Transfer">
-            <input type="hidden" asp-for="AccountNumber" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group"> 
-                @* target dest number *@
-                <label asp-for="DestinationAccountNumber" class="control-label"></label>
-                <input asp-for="DestinationAccountNumber" class="form-control" />
-                <span asp-validation-for="DestinationAccountNumber" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                @* ReSharper disable once UnknownCssClass *@
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Comment" class="control-label"></label>
-                <input asp-for="Comment" class="form-control" />
-                <span asp-validation-for="Comment" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Transfer" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-teal">
+            Transfer to Account @Model.Account.AccountNumber
+        </h1>
+        <p>
+            Account Type: <strong>@Model.Account.AccountType</strong>
+        </p>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to Accounts</a>
+    <div class="d-flex justify-content-center">
+        <div class="card shadow-sm border-0 rounded-4" style="width: 420px;">
+            <div class="card-header text-white text-center fw-semibold"
+                 style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                Transfer Funds
+            </div>
+
+            <div class="card-body bg-light rounded-bottom-4 p-4">
+                <form asp-action="Transfer">
+                    <input type="hidden" asp-for="AccountNumber" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-3">
+                        @* target dest number *@
+                        <label asp-for="DestinationAccountNumber" class="control-label"></label>
+                        <input asp-for="DestinationAccountNumber" class="form-control" />
+                        <span asp-validation-for="DestinationAccountNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        @* ReSharper disable once UnknownCssClass *@
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" class="form-control" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Comment" class="control-label"></label>
+                        <input asp-for="Comment" class="form-control" />
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <input type="submit" value="Transfer" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-secondary">
+            Back to Accounts
+        </a>
+    </div>
 </div>
 
 @section Scripts {

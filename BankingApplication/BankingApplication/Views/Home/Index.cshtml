@@ -3,23 +3,37 @@
     ViewData["Title"] = "Accounts";
 }
 
-<div>
-    <h1 class="display-4">Welcome, @Model.Name</h1>
-    
-    <h3>Your Accounts</h3>
-    <table class="table">
-        <tr>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountNumber)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountType)</th>
-            <th>@Html.DisplayNameFor(x => x.Accounts[0].Balance)</th>
-            <th></th>
-        </tr>
-        @foreach(var account in Model.Accounts) {
-            <tr>
-                <td>@Html.DisplayFor(x => account.AccountNumber)</td>
-                <td>@Html.DisplayFor(x => account.AccountType)</td>
-                <td>@Html.DisplayFor(x => account.Balance)</td>
-            </tr>
-        }
-    </table>
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-teal">Welcome, @Model.Name </h1>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="fw-bold card-header text-white text-center fw-semibold" style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Your Accounts
+        </div>
+        <div class="card-body bg-light rounded-bottom-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountNumber)</th>
+                            <th>@Html.DisplayNameFor(x => x.Accounts[0].AccountType)</th>
+                            <th>@Html.DisplayNameFor(x => x.Accounts[0].Balance)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <tr>
+                                <td class="fw-semibold">@account.AccountNumber</td>
+                                <td>@account.AccountType</td>
+                                <td class="text-success fw-semibold">$@account.Balance.ToString("N2")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
