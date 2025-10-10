@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BankingApplication.Models;
+namespace AdminPortal.Models;
 
-public class Payee
+public class PayeeDto
 {
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int PayeeID { get; set; }
