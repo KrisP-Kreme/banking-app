@@ -62,14 +62,15 @@ public class HomeController : Controller
 
         if (login == null)
         {
-            ModelState.AddModelError("", "Incorrect Login ID or Password, try again");
+            ModelState.AddModelError(nameof(viewModel.LoginID), "Invalid Login ID or Password, try again");
+            return View(viewModel);
         }
 
         bool passwordMatches = new SimpleHash().Verify(viewModel.Password, login.PasswordHash);
 
         if (!passwordMatches)
         {
-            ModelState.AddModelError("", "Invalid Login ID or Password, try again");
+            ModelState.AddModelError(nameof(viewModel.LoginID), "Invalid Login ID or Password, try again");
             return View(viewModel);
         }
 
