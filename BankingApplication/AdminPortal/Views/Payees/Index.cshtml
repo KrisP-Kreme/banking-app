@@ -8,6 +8,12 @@
     <div class="text-center mb-4">
         <h1 class="fw-bold text-teal">Payees</h1>
     </div>
+    <form asp-action="Index" method="get" class="mb-3 d-flex justify-content-center">
+        <input type="text" name="postcode" value="@ViewData["CurrentPostcode"]"
+               class="form-control w-25 me-2" placeholder="Filter by postcode..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Reset</a>
+    </form>
     <div class="card shadow-sm border-0 rounded-4">
         <div class="fw-bold card-header text-white text-center fw-semibold" style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
             Payees Overview
@@ -40,7 +46,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Phone)</td>
                             <td>
                                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.PayeeID">Edit</a>
-                                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PayeeID">Delete</a>
+                                @* <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PayeeID">Delete</a> *@
                             </td>
                         </tr>
                 }

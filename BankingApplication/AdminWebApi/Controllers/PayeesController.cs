@@ -4,8 +4,6 @@ using AdminWebApi.Models.Repository;
 
 namespace AdminWebApi.Controllers;
 
-// See here for more information:
-// https://learn.microsoft.com/en-au/aspnet/core/web-api/?view=aspnetcore-9.0
 
 [ApiController]
 [Route("api/[controller]")]
@@ -19,13 +17,16 @@ public class PayeesController : ControllerBase
     }
 
     // GET: api/payees
+    // Retrieves all payees from the repository.
     [HttpGet]
     public IEnumerable<Payee> Get()
     {
         return _repo.GetAll();
     }
 
-    // GET api/payees/1
+    // GET api/payees/{id}
+    // Retrieves a single payee by its ID.
+    // {id} is the route parameter specifying which payee to get.
     [HttpGet("{id:int}")]
     public Payee Get(int id)
     {
@@ -33,6 +34,9 @@ public class PayeesController : ControllerBase
     }
 
     // POST api/payees
+    // Adds a new payee to the repository.
+    // The payee object is sent in the request body as JSON.
+    // Returns the ID of the newly created payee.
     [HttpPost]
     public int Post([FromBody] Payee payee)
     {
@@ -42,13 +46,18 @@ public class PayeesController : ControllerBase
     }
 
     // PUT api/payees
+    // Updates an existing payee.
+    // The updated payee object is sent in the request body as JSON.
     [HttpPut]
     public void Put([FromBody] Payee payee)
     {
         _repo.Update(payee.PayeeID, payee);
     }
 
-    // DELETE api/payees/1
+    // DELETE api/payees/{id}
+    // Deletes a payee by its ID.
+    // {id} is the route parameter specifying which payee to delete.
+    // Returns the ID of the deleted payee.
     [HttpDelete("{id:int}")]
     public int Delete(int id)
     {

@@ -15,22 +15,28 @@ public class PayeesController : Controller
         _client = clientFactory.CreateClient("api");
     }
 
-    // GET: Payees/Index
-    public async Task<IActionResult> Index()
+    // GET: Payees/Index (with postcode filtering)
+    public async Task<IActionResult> Index(string? postcode)
     {
-        using var response = await _client.GetAsync("api/payees");
-        //using var response = await PayeeApi.InitializeClient().GetAsync("api/payees");
+        if (HttpContext.Session.GetString("Username") == null)
+            return RedirectToAction("Login", "Home");
 
+        using var response = await _client.GetAsync("api/payees");
         response.EnsureSuccessStatusCode();
 
-        // Storing the response details received from web api.
         var result = await response.Content.ReadAsStringAsync();
+        var payees = JsonConvert.DeserializeObject<List<PayeeDto>>(result) ?? new List<PayeeDto>();
 
-        // Deserializing the response received from web api and storing into a list.
-        var payees = JsonConvert.DeserializeObject<List<PayeeDto>>(result);
+        // Filter locally by postcode
+        if (!string.IsNullOrWhiteSpace(postcode))
+        {
+            payees = payees.Where(p => p.Postcode != null && p.Postcode.Contains(postcode)).ToList();
+            ViewData["CurrentPostcode"] = postcode; // keep value in search box
+        }
 
         return View(payees);
     }
+
 
     // GET: Payees/Create
     public IActionResult Create()

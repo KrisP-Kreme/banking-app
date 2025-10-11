@@ -6,6 +6,7 @@ using AdminWebApi.Models.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// retrieve it from the db, which opens up via api
 builder.Services.AddDbContext<MvcAdminContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MvcAdminContext")));
 

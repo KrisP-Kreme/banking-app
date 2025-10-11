@@ -41,7 +41,7 @@ public class BillPay
     public DateTime ScheduleTimeUtc { get; set; }
         
     [Required]
-    public Period Period { get; set; } // how often scheduled payment will occur
+    public Period Period { get; set; }
 
     public BillPayStatus Status { get; set; } = BillPayStatus.Pending;
 }

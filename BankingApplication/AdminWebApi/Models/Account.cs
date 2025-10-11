@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminWebApi.Models;
 
+// only taking partial information of account - ignore transactions and customer.
 public class Account
 {
     [DatabaseGenerated(DatabaseGeneratedOption.None)]

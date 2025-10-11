@@ -4,9 +4,7 @@ using AdminWebApi.Models.Repository;
 
 namespace AdminWebApi.Controllers;
 
-// See here for more information:
-// https://learn.microsoft.com/en-au/aspnet/core/web-api/?view=aspnetcore-9.0
-
+//use api controllers - same as payee
 [ApiController]
 [Route("api/[controller]")]
 public class BillPaysController : ControllerBase

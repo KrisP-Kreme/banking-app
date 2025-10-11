@@ -6,6 +6,9 @@ namespace AdminPortal.Controllers
 {
     public class HomeController : Controller
     {
+        private const string VALID_USERNAME = "admin";
+        private const string VALID_PASSWORD = "admin";
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,7 +18,42 @@ namespace AdminPortal.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "Payees");
+            if (HttpContext.Session.GetString("Username") != null)
+            {
+                return RedirectToAction("Index", "Payees");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }            
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(string username, string password)
+        {
+            // Check credentials
+            if (username == VALID_USERNAME && password == VALID_PASSWORD)
+            {
+                HttpContext.Session.SetString("Username", username);
+                return RedirectToAction("Index", "Payees");
+            }
+
+            ViewBag.Error = "Invalid username or password.";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
 
         public IActionResult Privacy()

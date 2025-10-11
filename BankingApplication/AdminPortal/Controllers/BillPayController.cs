@@ -16,6 +16,9 @@ namespace AdminPortal.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+                return RedirectToAction("Login", "Home");
+
             using var response = await _client.GetAsync("api/billpays");
 
             response.EnsureSuccessStatusCode();
