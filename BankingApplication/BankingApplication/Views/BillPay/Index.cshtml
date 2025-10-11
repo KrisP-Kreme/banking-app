@@ -56,6 +56,10 @@
                                 {
                                     <span class="text-success">Paid</span>
                                 }
+                                else if (bill.Status == BillPayStatus.Blocked)
+                                {
+                                    <span class="text-muted fw-bold">Blocked</span>
+                                }
                                 </td>
                                 <td>
                                     @if (bill.Status == BillPayStatus.Paid)

@@ -1,0 +1,96 @@
+@model IEnumerable<AdminPortal.Models.BillPayDto>
+
+    @{
+    ViewData["Title"] = "BillPays";
+    }
+
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-teal">Scheduled Bill Payments</h1>
+        </div>
+
+        @if (Model != null && Model.Any())
+    {
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="fw-bold card-header text-white text-center fw-semibold"
+                 style="background-color: #0ed2f7; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                Bill Payments Overview
+            </div>
+            <div class="card-body bg-light rounded-bottom-4">
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>BillPay ID</th>
+                                <th>Account Number</th>
+                                <th>Payee</th>
+                                <th>Amount</th>
+                                <th>Scheduled Date & Time</th>
+                                <th>Period</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var bill in Model)
+                            {
+                            <tr>
+                                <td class="fw-semibold">@bill.BillPayID</td>
+                                <td class="fw-semibold">@bill.AccountNumber</td>
+                                <td class="fw-semibold">@bill.Payee?.Name</td>
+                                <td class="fw-semibold text-success">@($"${bill.Amount:0.00}")</td>
+                                <td>@bill.ScheduleTimeUtc.ToLocalTime().ToString("dd/MM/yyyy - HH:mm")</td>
+                                <td>@bill.Period</td>
+                                <td>
+                                    @if (bill.Status == AdminPortal.Models.BillPayStatus.Failed)
+                                        {
+                                    <span class="text-danger fw-bold">Failed</span>
+                                        }
+                                        else if (bill.Status == AdminPortal.Models.BillPayStatus.Paid)
+                                        {
+                                    <span class="text-success">Paid</span>
+                                        }
+                                        else if (bill.Status == AdminPortal.Models.BillPayStatus.Pending)
+                                        {
+                                    <span class="text-primary">Pending</span>
+                                        }
+                                        else if (bill.Status == AdminPortal.Models.BillPayStatus.Blocked)
+                                        {
+                                    <span class="text-muted fw-bold">Blocked</span>
+                                        }
+                                </td>
+                                <td>
+                                    @if (bill.Status == AdminPortal.Models.BillPayStatus.Blocked)
+                                        {
+                                    <form asp-controller="BillPay" asp-action="Unblock" method="post" class="d-inline">
+                                        <input type="hidden" name="id" value="@bill.BillPayID" />
+                                        <button type="submit" class="btn btn-success btn-sm">Unblock</button>
+                                    </form>
+                                        }
+                                    else if (bill.Status == AdminPortal.Models.BillPayStatus.Paid)
+                                        {
+                                        <span class="text-secondary">Completed</span>
+                                    }
+                                    else
+                                        {
+                                        <form asp-controller="BillPay" asp-action="Block" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@bill.BillPayID" />
+                                            <button type="submit" class="btn btn-warning btn-sm">Block</button>
+                                        </form>
+                                        }
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            No bill payments found.
+        </div>
+    }
+    </div>

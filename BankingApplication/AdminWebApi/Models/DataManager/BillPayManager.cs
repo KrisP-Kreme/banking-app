@@ -1,5 +1,6 @@
 using AdminWebApi.Data;
 using AdminWebApi.Models.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminWebApi.Models.DataManager;
 
@@ -14,12 +15,16 @@ public class BillPayManager : IBillPayRepository, IDataRepository<BillPay, int>
 
     public BillPay Get(int id)
     {
-        return _context.BillPays.Find(id);
+        return _context.BillPays
+            .Include(bp => bp.Payee)
+            .FirstOrDefault(bp => bp.BillPayID == id);
     }
 
     public IEnumerable<BillPay> GetAll()
     {
-        return _context.BillPays.ToList();
+        return _context.BillPays
+            .Include(bp => bp.Payee)
+            .ToList();
     }
 
     public int Add(BillPay billPay)
