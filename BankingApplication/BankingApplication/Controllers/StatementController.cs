@@ -17,6 +17,9 @@ public class StatementController : Controller
     }
     public async Task<IActionResult> Index()
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         var customer = await _context.Customers.Include(x => x.Accounts).
             FirstOrDefaultAsync(x => x.CustomerID == CustomerID);
 
@@ -25,6 +28,9 @@ public class StatementController : Controller
 
     public async Task<IActionResult> Statement(int accountNumber, int page = 1)
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         const int pageSize = 4;
 
         var account = await _context.Accounts.FindAsync(accountNumber);

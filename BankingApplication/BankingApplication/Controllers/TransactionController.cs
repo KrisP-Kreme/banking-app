@@ -21,6 +21,8 @@ public class TransactionController : Controller
 
     public async Task<IActionResult> Index()
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
         // Lazy loading.
         // The Customer.Accounts property will be lazy loaded upon demand.
         //var customer = await _context.Customers.FindAsync(CustomerID);
@@ -35,6 +37,9 @@ public class TransactionController : Controller
 
     public async Task<IActionResult> Deposit(int accountNumber)
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         return View(new TransactionViewModel
         {
             AccountNumber = accountNumber,
@@ -183,6 +188,9 @@ public class TransactionController : Controller
 
     public async Task<IActionResult> Withdraw(int accountNumber)
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         return View(
             new TransactionViewModel
             {
@@ -265,6 +273,9 @@ public class TransactionController : Controller
 
     public async Task<IActionResult> Transfer(int accountNumber)
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         return View(
             new TransactionViewModel
             {

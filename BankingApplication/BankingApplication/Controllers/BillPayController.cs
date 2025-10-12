@@ -22,6 +22,9 @@ public class BillPayController : Controller
     [HttpGet]
     public IActionResult Create(int accountNumber)
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         var viewModel = new BillPayViewModel
         {
             BillPay = new BillPay
@@ -56,6 +59,9 @@ public class BillPayController : Controller
 
     public async Task<IActionResult> Index()
     {
+        if (CustomerID == null)
+            return RedirectToAction("Login", "Home");
+
         var customer = await _context.Customers.Include(x => x.Accounts).
             ThenInclude(x => x.BillPays).
             ThenInclude(x => x.Payee).
