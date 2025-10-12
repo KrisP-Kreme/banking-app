@@ -2,24 +2,30 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
-
 @if (ViewBag.Error != null)
 {
     <div class="alert alert-danger">@ViewBag.Error</div>
 }
 
 <form asp-action="Login" method="post">
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" />
-    </div>
+    <div class="card shadow-sm" style="max-width: 400px; margin: auto; margin-top: 200px;">
+        <div class="card-header bg-black text-white text-center">
+            <h4 class="mb-0">Login to MCBA Admin</h4>
+        </div>
+        <div class="card-body bg-light rounded">
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" />
+            </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" />
-    </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" />
+            </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
 </form>
