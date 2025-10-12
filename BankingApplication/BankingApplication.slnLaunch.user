@@ -3,11 +3,15 @@
     "Name": "adminFeatures",
     "Projects": [
       {
+        "Path": "AdminWebApi\\AdminWebApi.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
         "Path": "AdminPortal\\AdminPortal.csproj",
         "Action": "StartWithoutDebugging"
       },
       {
-        "Path": "AdminWebApi\\AdminWebApi.csproj",
+        "Path": "BankingApplication\\BankingApplication.csproj",
         "Action": "StartWithoutDebugging"
       }
     ]

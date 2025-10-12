@@ -27,7 +27,7 @@ public class BillPayController : Controller
             BillPay = new BillPay
             {
                 AccountNumber = accountNumber,
-                ScheduleTimeUtc = DateTime.UtcNow
+                ScheduleTimeUtc = DateTime.Now
             },
             Payees = _context.Payees.ToList()
         };
@@ -41,10 +41,12 @@ public class BillPayController : Controller
     {
         if (!ModelState.IsValid)
         {
-            viewModel.BillPay.ScheduleTimeUtc = DateTime.SpecifyKind(viewModel.BillPay.ScheduleTimeUtc, DateTimeKind.Utc);
             viewModel.Payees = _context.Payees.ToList();
             return View(viewModel);
         }
+
+        var localTime = DateTime.SpecifyKind(viewModel.BillPay.ScheduleTimeUtc, DateTimeKind.Local);
+        viewModel.BillPay.ScheduleTimeUtc = localTime.ToUniversalTime();
 
         _context.BillPays.Add(viewModel.BillPay);
         _context.SaveChanges();

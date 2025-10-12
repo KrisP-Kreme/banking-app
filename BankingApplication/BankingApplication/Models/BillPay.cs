@@ -37,7 +37,7 @@ public class BillPay
 
     [Required]
     [DataType(DataType.DateTime)]
-    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
     public DateTime ScheduleTimeUtc { get; set; }
         
     [Required]

@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BankingApplication",
+    "\\BankingApplication\\BankingApplication",
+    "\\BankingApplication\\BankingApplication\\BankgroundServices",
+    "\\BankingApplication\\BankingApplication\\Data",
+    "\\BankingApplication\\BankingApplication\\Database",
+    "\\BankingApplication\\BankingApplication\\Models",
+    "\\BankingApplication\\BankingApplication\\ViewModels",
+    "\\BankingApplication\\BankingApplication\\Views",
+    "\\BankingApplication\\BankingApplication\\Views\\BillPay"
   ],
-  "SelectedNode": "\\BankingApplication.sln",
+  "SelectedNode": "\\BankingApplication\\BankingApplication\\Controllers\\BillPayController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -413,7 +413,6 @@ C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\Bank
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\scopedcss\bundle\BankingApplication.styles.css
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\scopedcss\projectbundle\BankingApplication.bundle.scp.css
-C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\compressed\26xgzoc084-b9sayid5wm.gz
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\compressed\3nctqre6pu-61n19gt1b8.gz
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\compressed\sjcaq7tr62-xtxxf3hu2r.gz
 C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\compressed\dcprej0otf-t1cqhe9u97.gz
@@ -560,3 +559,5 @@ C:\Users\giang\Documents\WDT25\s3965206-s3935358-a2\BankingApplication\BankingAp
 C:\Users\giang\Documents\WDT25\s3965206-s3935358-a2\BankingApplication\BankingApplication\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\giang\Documents\WDT25\s3965206-s3935358-a2\BankingApplication\BankingApplication\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\giang\Documents\WDT25\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\BankingApplication.csproj.AssemblyReference.cache
+C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\bin\Debug\net9.0\SimpleHashing.Net.dll
+C:\Users\Kristijan\Documents\Github\s3965206-s3935358-a2\BankingApplication\BankingApplication\obj\Debug\net9.0\compressed\26xgzoc084-imqjw6jrpr.gz
