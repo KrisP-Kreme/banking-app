@@ -23,11 +23,7 @@ public class TransactionController : Controller
     {
         if (CustomerID == null)
             return RedirectToAction("Login", "Home");
-        // Lazy loading.
-        // The Customer.Accounts property will be lazy loaded upon demand.
-        //var customer = await _context.Customers.FindAsync(CustomerID);
 
-        // OR
         // Eager loading. (because we're using viewmodel, so we don't link to the model directly)
         var customer = await _context.Customers.Include(x => x.Accounts).
             FirstOrDefaultAsync(x => x.CustomerID == CustomerID);
@@ -47,14 +43,12 @@ public class TransactionController : Controller
         });
     }
 
+    //check for valid deposit, with serverside validation
     [HttpPost]
     public async Task<IActionResult> Deposit(TransactionViewModel viewModel)
     {
-        // Validate input
         viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
 
-        // Note this code could be moved out of the controller, e.g., into the model, business objects, facade,
-        // validators, etc...
         if (viewModel.Account == null)
         {
             ModelState.AddModelError("", "Account not found.");
@@ -76,6 +70,7 @@ public class TransactionController : Controller
         return View("ConfirmTransaction", viewModel);
     }
 
+    // for after choosing amount, account etc for the specific transactions
     [HttpPost]
     public async Task<IActionResult> ConfirmTransaction(TransactionViewModel viewModel, string action, string transacType)
     {
@@ -205,8 +200,6 @@ public class TransactionController : Controller
         // this is the submitted information
         viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
 
-        // Note this code could be moved out of the controller, e.g., into the model, business objects, facade,
-        // validators, etc...
         if (viewModel.Account == null)
         {
             ModelState.AddModelError("", "Account not found.");
@@ -290,8 +283,6 @@ public class TransactionController : Controller
         // this is the submitted information
         viewModel.Account = await _context.Accounts.FindAsync(viewModel.AccountNumber);
 
-        // Note this code could be moved out of the controller, e.g., into the model, business objects, facade,
-        // validators, etc...
         if (viewModel.Account == null)
         {
             ModelState.AddModelError("", "Account not found.");

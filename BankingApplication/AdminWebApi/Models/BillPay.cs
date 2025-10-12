@@ -4,6 +4,7 @@ using System;
 
 namespace AdminWebApi.Models;
 
+// taken from banking application model
 public enum Period
 {
     OneOff = 1,

@@ -5,6 +5,7 @@ namespace AdminPortal.Web.Helper;
 
 public static class AdminApi
 {
+    // helper to configure calls to httpclient
     private const string ApiBaseUri = "http://localhost:5063";
 
     public static HttpClient InitializeClient()

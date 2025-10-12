@@ -16,7 +16,7 @@ namespace BankingApplication.Controllers
             _context = context;
         }
 
-        // --- View profile ---
+        // view profile
         public async Task<IActionResult> Index()
         {
             if (CustomerID == null)
@@ -32,7 +32,7 @@ namespace BankingApplication.Controllers
             return View(customer);
         }
 
-        // --- Edit profile (GET) ---
+        // get to the specific page of the user that we want to edit
         [HttpGet]
         public async Task<IActionResult> Edit()
         {
@@ -46,6 +46,7 @@ namespace BankingApplication.Controllers
             return View(customer);
         }
 
+        // parse the parameter of updated payee information
         [HttpPost]
         public async Task<IActionResult> Edit(Customer model)
         {
@@ -71,7 +72,7 @@ namespace BankingApplication.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
+        // specifically for password changing
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
@@ -103,7 +104,7 @@ namespace BankingApplication.Controllers
 
             var hashHelper = new SimpleHash();
 
-            // Verify old password
+            // verify old password
             bool passwordMatches = hashHelper.Verify(oldPassword, customer.Login.PasswordHash);
             if (!passwordMatches)
             {
@@ -111,7 +112,7 @@ namespace BankingApplication.Controllers
                 return View();
             }
 
-            // Check new passwords match
+            // check new passwords match
             if (newPassword != confirmPassword)
             {
                 ModelState.AddModelError("", "New passwords do not match.");

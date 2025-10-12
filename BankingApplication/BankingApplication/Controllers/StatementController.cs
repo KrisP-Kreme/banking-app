@@ -26,6 +26,7 @@ public class StatementController : Controller
         return View(customer);
     }
 
+    // based on the account we want to see statements of and which page it's currently on.
     public async Task<IActionResult> Statement(int accountNumber, int page = 1)
     {
         if (CustomerID == null)

@@ -4,7 +4,7 @@ using AdminWebApi.Models.Repository;
 
 namespace AdminWebApi.Controllers;
 
-
+// this ensures that api routes start with http://localhost:5063/api/payees
 [ApiController]
 [Route("api/[controller]")]
 public class PayeesController : ControllerBase
@@ -17,7 +17,7 @@ public class PayeesController : ControllerBase
     }
 
     // GET: api/payees
-    // Retrieves all payees from the repository.
+    // retrieves all payees from the repository, so that we can display it later.
     [HttpGet]
     public IEnumerable<Payee> Get()
     {
@@ -25,42 +25,19 @@ public class PayeesController : ControllerBase
     }
 
     // GET api/payees/{id}
-    // Retrieves a single payee by its ID.
-    // {id} is the route parameter specifying which payee to get.
+    // retrieves a single payee by its ID. {id} is the route parameter specifying which payee to get.
     [HttpGet("{id:int}")]
     public Payee Get(int id)
     {
         return _repo.Get(id);
     }
 
-    // POST api/payees
-    // Adds a new payee to the repository.
-    // The payee object is sent in the request body as JSON.
-    // Returns the ID of the newly created payee.
-    [HttpPost]
-    public int Post([FromBody] Payee payee)
-    {
-        _repo.Add(payee);
-
-        return payee.PayeeID;
-    }
-
     // PUT api/payees
-    // Updates an existing payee.
-    // The updated payee object is sent in the request body as JSON.
+    // Updates an existing payee. The updated payee object is sent in the request body as JSON.
+    // this is for when we want to update the payee information - we send a put request to update.
     [HttpPut]
     public void Put([FromBody] Payee payee)
     {
         _repo.Update(payee.PayeeID, payee);
-    }
-
-    // DELETE api/payees/{id}
-    // Deletes a payee by its ID.
-    // {id} is the route parameter specifying which payee to delete.
-    // Returns the ID of the deleted payee.
-    [HttpDelete("{id:int}")]
-    public int Delete(int id)
-    {
-        return _repo.Delete(id);
     }
 }

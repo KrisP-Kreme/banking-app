@@ -15,9 +15,10 @@ public class PayeesController : Controller
         _client = clientFactory.CreateClient("api");
     }
 
-    // GET: Payees/Index (with postcode filtering)
+    // GET: Payees/Index (with postcode filtering, if postcode was not requested, just show the payees)
     public async Task<IActionResult> Index(string? postcode)
     {
+        //if not logged in
         if (HttpContext.Session.GetString("Username") == null)
             return RedirectToAction("Login", "Home");
 
@@ -27,7 +28,7 @@ public class PayeesController : Controller
         var result = await response.Content.ReadAsStringAsync();
         var payees = JsonConvert.DeserializeObject<List<PayeeDto>>(result) ?? new List<PayeeDto>();
 
-        // Filter locally by postcode
+        // filter by postcode if postcode is present and parsed
         if (!string.IsNullOrWhiteSpace(postcode))
         {
             payees = payees.Where(p => p.Postcode != null && p.Postcode.Contains(postcode)).ToList();
@@ -37,35 +38,7 @@ public class PayeesController : Controller
         return View(payees);
     }
 
-
-    // GET: Payees/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: Payees/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Create(PayeeDto payee)
-    {
-        if (ModelState.IsValid)
-        {
-            var content =
-                new StringContent(JsonConvert.SerializeObject(payee), Encoding.UTF8, MediaTypeNames.Application.Json);
-
-            using var response = _client.PostAsync("api/payees", content).Result;
-            //using var response = PayeeApi.InitializeClient().PostAsync("api/payees", content).Result;
-
-            response.EnsureSuccessStatusCode();
-
-            return RedirectToAction("Index");
-        }
-
-        return View(payee);
-    }
-
-    // GET: Payees/Edit/1
+    // GET: Payees/Edit/1 - getting the user and edit based on the id of the specific payee.
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -104,36 +77,5 @@ public class PayeesController : Controller
         }
 
         return View(payee);
-    }
-
-    // GET: Payees/Delete/1
-    public async Task<IActionResult> Delete(int? id)
-    {
-        if (id == null)
-            return NotFound();
-
-        using var response = await _client.GetAsync($"api/payees/{id}");
-        //using var response = await PayeeApi.InitializeClient().GetAsync($"api/payees/{id}");
-
-        response.EnsureSuccessStatusCode();
-
-        var result = await response.Content.ReadAsStringAsync();
-        var payee = JsonConvert.DeserializeObject<PayeeDto>(result);
-
-        return View(payee);
-    }
-
-    // POST: Payees/Delete/1
-    [HttpPost]
-    [ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public IActionResult DeleteConfirmed(int id)
-    {
-        using var response = _client.DeleteAsync($"api/payees/{id}").Result;
-        //using var response = PayeeApi.InitializeClient().DeleteAsync($"api/payees/{id}").Result;
-
-        response.EnsureSuccessStatusCode();
-
-        return RedirectToAction("Index");
     }
 }

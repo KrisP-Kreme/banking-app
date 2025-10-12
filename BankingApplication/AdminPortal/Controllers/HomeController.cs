@@ -6,6 +6,7 @@ namespace AdminPortal.Controllers
 {
     public class HomeController : Controller
     {
+        // ensure that the only valid login details are the following
         private const string VALID_USERNAME = "admin";
         private const string VALID_PASSWORD = "admin";
 
@@ -16,6 +17,7 @@ namespace AdminPortal.Controllers
             _logger = logger;
         }
 
+        // if logged in, go to payee page, else go into login page
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString("Username") != null)

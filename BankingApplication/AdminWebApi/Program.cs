@@ -34,6 +34,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//maps the path of the api
 app.MapGet("api/UsingMapGet", (string name, int? repeat) =>
 {
     if (string.IsNullOrWhiteSpace(name))

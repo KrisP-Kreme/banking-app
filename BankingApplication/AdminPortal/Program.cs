@@ -13,14 +13,6 @@ builder.Services.AddHttpClient("api", client =>
         new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
 });
 
-// Or configure the default client.
-//builder.Services.AddHttpClient(Options.DefaultName, client =>
-//{
-//    client.BaseAddress = new Uri("http://localhost:5063");
-//    client.DefaultRequestHeaders.Accept.Add(
-//        new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-//});
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 var app = builder.Build();
@@ -29,8 +21,9 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 
-//app.UseHttpsRedirection();
 app.UseRouting();
+
+// session for usage of login
 app.UseSession();
 app.UseAuthorization();
 

@@ -13,7 +13,7 @@ public class HomeController : Controller
 {
     private readonly BankingApplicationContext _context;
 
-    // Simulate being "logged in" as Matthew Bolger by hard-coding the CustomerID.
+    // get the customer id of currently logged in customer
     private string SessionKey_CustomerID = $"{nameof(HomeController)}_CustomerID";
 
     public HomeController(BankingApplicationContext context)
@@ -23,8 +23,6 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        // Lazy loading.
-        //var customer = await _context.Customers.FindAsync(_customerID);
         var customerID = HttpContext.Session.GetInt32(SessionKey_CustomerID);
 
         if (customerID == null)
