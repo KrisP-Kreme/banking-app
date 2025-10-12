@@ -23,6 +23,22 @@ public class PayeeManager : IPayeeRepository, IDataRepository<Payee, int>
         return _context.Payees.ToList();
     }
 
+    public int Add(Payee payee)
+    {
+        _context.Payees.Add(payee);
+        _context.SaveChanges();
+
+        return payee.PayeeID;
+    }
+
+    public int Delete(int id)
+    {
+        _context.Payees.Remove(_context.Payees.Find(id));
+        _context.SaveChanges();
+
+        return id;
+    }
+
     public int Update(int id, Payee payee)
     {
         _context.Payees.Update(payee);
