@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 
-namespace BankingApplication.Models;
+namespace AdminWebApi.Models;
 
 public enum Period
 {
@@ -15,7 +15,7 @@ public enum BillPayStatus
     Pending = 1,
     Paid = 2,
     Failed = 3,
-    Blocked =  4
+    Blocked = 4
 }
 
 public class BillPay
@@ -41,7 +41,7 @@ public class BillPay
     public DateTime ScheduleTimeUtc { get; set; }
         
     [Required]
-    public Period Period { get; set; } // how often scheduled payment will occur
+    public Period Period { get; set; }
 
     public BillPayStatus Status { get; set; } = BillPayStatus.Pending;
 }

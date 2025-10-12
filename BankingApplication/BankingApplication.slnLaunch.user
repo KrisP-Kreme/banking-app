@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "adminFeatures",
+    "Projects": [
+      {
+        "Path": "AdminPortal\\AdminPortal.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "AdminWebApi\\AdminWebApi.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]
